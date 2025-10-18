@@ -205,6 +205,36 @@ body {
   margin-right: 0.5rem;
 }
 
+/* Enhanced Author and Institution Styling */
+.publication-authors sup {
+  font-weight: 600;
+  color: #667eea;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+.institution-list {
+  margin-top: 15px;
+  padding: 15px 25px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f5 100%);
+  border-radius: 10px;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.institution-list .author-block {
+  display: inline-block;
+  margin: 4px 8px;
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+.institution-list sup {
+  font-weight: 700;
+  color: #667eea;
+  margin-right: 4px;
+}
+
 .publication-banner img {
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-lg);
