@@ -793,6 +793,26 @@
           color: #991b1b;
         }
         
+        .score-row {
+          background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+          border-top: 2px solid #667eea !important;
+        }
+        
+        .score-row:hover {
+          background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%) !important;
+        }
+        
+        .score-row td {
+          padding: 15px !important;
+          border-bottom: none !important;
+        }
+        
+        .score-cell {
+          color: #667eea;
+          font-weight: 700;
+          font-size: 1.2em;
+        }
+        
         .stats-bar {
           display: flex;
           gap: 20px;
@@ -1127,12 +1147,14 @@
     
     // Display comparison rubrics tables
     displayComparisonRubrics('thinking', model1Data.thinking_trace.rubrics, model2Data.thinking_trace.rubrics, 
-                             formatModelName(model1Data.model_name), formatModelName(model2Data.model_name));
+                             formatModelName(model1Data.model_name), formatModelName(model2Data.model_name),
+                             model1Data.thinking_trace.score, model2Data.thinking_trace.score);
     displayComparisonRubrics('response', model1Data.model_resp.rubrics, model2Data.model_resp.rubrics,
-                             formatModelName(model1Data.model_name), formatModelName(model2Data.model_name));
+                             formatModelName(model1Data.model_name), formatModelName(model2Data.model_name),
+                             model1Data.model_resp.score, model2Data.model_resp.score);
   }
   
-  function displayComparisonRubrics(section, rubrics1, rubrics2, model1Name, model2Name) {
+  function displayComparisonRubrics(section, rubrics1, rubrics2, model1Name, model2Name, score1, score2) {
     const container = document.getElementById(`${section}-rubrics`);
     
     if (!container) {
@@ -1193,6 +1215,18 @@
         </tr>
       `;
     });
+    
+    // Add score row at the bottom
+    const score1Display = score1 !== undefined && score1 !== null ? score1.toFixed(2) : 'N/A';
+    const score2Display = score2 !== undefined && score2 !== null ? score2.toFixed(2) : 'N/A';
+    
+    tableHtml += `
+          <tr class="score-row">
+            <td colspan="3" style="text-align: right; font-weight: bold; padding-right: 20px;">Score:</td>
+            <td class="score-cell" style="text-align: center; font-weight: bold; font-size: 1.1em;">${score1Display}</td>
+            <td class="score-cell" style="text-align: center; font-weight: bold; font-size: 1.1em;">${score2Display}</td>
+          </tr>
+    `;
     
     tableHtml += `
         </tbody>
