@@ -245,56 +245,64 @@
             <div class="is-size-5 publication-authors">
               <!-- TODO: Replace with your paper authors and their personal links -->
               <span class="author-block">
-                <a href="https://kellycyy.github.io/" target="_blank">Yu Ying Chiu</a><sup>*</sup>,</span>
+                <a href="https://kellycyy.github.io/" target="_blank">Yu Ying Chiu</a><sup>*1,2</sup>,</span>
                 <span class="author-block">
                   <a href="https://symikelee.github.io/" target="_blank">Michael S. Lee</a><sup>*</sup>,</span>
                   <br>
                   <span class="author-block">
-                    Rachel Calcott,</span>
+                    Rachel Calcott<sup>4</sup>,</span>
                   <span class="author-block">
-                    <a href="https://brandonhandoko.com/" target="_blank">Brandon Handoko</a>,</span>
+                    <a href="https://brandonhandoko.com/" target="_blank">Brandon Handoko</a><sup>3</sup>,</span>
                     <span class="author-block">
-                      <a href="https://www.pauldfr.com/" target="_blank">Paul de Font-Reaulx</a>,</span>                  
+                      <a href="https://www.pauldfr.com/" target="_blank">Paul de Font-Reaulx</a><sup>5</sup>,</span>                  
                   <span class="author-block">
-                    Paula Rodriguez,</span>
+                    Paula Rodriguez<sup>3</sup>,</span>
                   <span class="author-block">
-                    <a href="https://calvincbzhang.github.io/" target="_blank">Chen Bo Calvin Zhang</a>,</span>
+                    <a href="https://calvincbzhang.github.io/" target="_blank">Chen Bo Calvin Zhang</a><sup>3</sup>,</span>
                     <span class="author-block">
-                      <a href="https://www.ziwenhan.com/" target="_blank">Ziwen Han</a>,</span>          
+                      <a href="https://www.ziwenhan.com/" target="_blank">Ziwen Han</a><sup>†3</sup>,</span>          
                     <span class="author-block">
-                      <a href="https://udarimadhu.github.io/" target="_blank">Udari Madhushani Sehwag</a>,</span>
+                      <a href="https://udarimadhu.github.io/" target="_blank">Udari Madhushani Sehwag</a><sup>3</sup>,</span>
                     <span class="author-block">
                       <a href="https://yashmaurya.com/" target="_blank">Yash Maurya</a>,</span>                                        
                       <br>
                       <span class="author-block">
-                        Christina Knight,</span>  
+                        Christina Knight<sup>3</sup>,</span>  
                       <span class="author-block">
                         <a href="https://www.harryrlloyd.com/" target="_blank">	
-                          Harry R. Lloyd</a>,</span>   
+                          Harry Lloyd</a><sup>6</sup>,</span>   
                       <span class="author-block">
-                        Florence Bacus,</span> 
+                        Florence Bacus<sup>4</sup>,</span> 
                       <br>                                
                       <span class="author-block">
-                        Mantas Mazeika,</span>  
+                        Mantas Mazeika<sup>7</sup>,</span>  
                         <span class="author-block">
                           <a href="http://bingliu.me/" target="_blank">	
-                            Bing Liu</a>,</span>                           
+                            Bing Liu</a><sup>3</sup>,</span>                           
                         <span class="author-block">
                           <a href="https://yejinc.github.io/" target="_blank">	
-                            Yejin Choi</a>,</span>   
+                            Yejin Choi</a><sup>8</sup>,</span>   
                         <span class="author-block">
                           <a href="https://mitchellg.github.io/" target="_blank">	
-                            Mitchell L. Gordon</a>,</span>   
+                            Mitchell Gordon</a><sup>9</sup>,</span>   
                         <span class="author-block">
                           <a href="https://sites.google.com/site/sydneymlevine/" target="_blank">	
-                            Sydney Levine</a></span>   
+                            Sydney Levine</a><sup>2,4,9</sup></span>   
                   </div>
 
-                  <div class="is-size-5 publication-authors">
+                  <div class="is-size-6 publication-authors institution-list">
                     <!-- TODO: Replace with your institution and conference/journal info <br>Conference name and year -->
-                    <span class="author-block">Institution Name</span>
+                    <span class="author-block"><sup>1</sup> University of Washington</span>
+                    <span class="author-block"><sup>2</sup> New York University</span>
+                    <span class="author-block"><sup>3</sup> Scale AI</span>
+                    <span class="author-block"><sup>4</sup> Harvard University</span>
+                    <span class="author-block"><sup>5</sup> University of Michigan</span><br>
+                    <span class="author-block"><sup>6</sup> UNC Chapel Hill</span>
+                    <span class="author-block"><sup>7</sup> Center for AI Safety</span>
+                    <span class="author-block"><sup>8</sup> Stanford University</span>
+                    <span class="author-block"><sup>9</sup> MIT</span> 
                     <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                    <div class="eql-cntrb" style="margin-top: 12px;"><small><sup>*</sup>Indicates Equal Contribution&nbsp;&nbsp;&nbsp;<sup>†</sup>Work while done at Scale AI</small></div>
                   </div>
 
                   <div class="column has-text-centered">
@@ -458,6 +466,847 @@
 </div>
 </section>
 <!-- End image carousel -->
+
+<!-- Model Comparison Section -->
+<section class="section" id="model-comparison">
+  <div class="container" style="max-width: 1800px; padding: 0 40px;">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Interactive Model Comparison</h2>
+        <p class="subtitle" style="margin-bottom: 2rem;">Compare how different AI models reason through moral dilemmas</p>
+      </div>
+    </div>
+    
+    <!-- Comparison Interface -->
+    <div id="comparison-interface">
+      <style>
+        #comparison-interface {
+          font-family: 'Inter', sans-serif;
+        }
+        
+        .comparison-controls {
+          background: white;
+          padding: 30px;
+          border-radius: 12px;
+          margin-bottom: 30px;
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .controls-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        
+        @media (min-width: 768px) {
+          .controls-grid {
+            grid-template-columns: 2fr 1fr 1fr;
+          }
+        }
+        
+        .control-group {
+          margin-bottom: 0;
+        }
+        
+        .control-group label {
+          display: block;
+          font-weight: 600;
+          color: #2c3e50;
+          margin-bottom: 10px;
+          font-size: 1.05em;
+        }
+        
+        .control-group select {
+          width: 100%;
+          padding: 12px 15px;
+          border: 2px solid #e1e8ed;
+          border-radius: 8px;
+          font-size: 16px;
+          transition: all 0.3s;
+          background: white;
+          cursor: pointer;
+        }
+        
+        .control-group select:hover {
+          border-color: #b55f05ff;
+        }
+        
+        .control-group select:focus {
+          outline: none;
+          border-color: #b55f05ff;
+          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .dilemma-panel {
+          background: white;
+          padding: 30px;
+          border-radius: 12px;
+          margin-bottom: 25px;
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .dilemma-header {
+          display: flex;
+          align-items: center;
+          margin-bottom: 20px;
+          padding-bottom: 15px;
+          border-bottom: 3px solid #b55f05ff;
+        }
+        
+        .dilemma-header h3 {
+          color: #284357ff;
+          font-size: 1.5em;
+          font-weight: 700;
+          margin: 0;
+          flex: 1;
+        }
+        
+        .metadata-pills {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          margin-bottom: 20px;
+        }
+        
+        .pill {
+          display: inline-flex;
+          align-items: center;
+          padding: 6px 14px;
+          background: #fdf0e3ff;
+          color: #b55f05ff;
+          border-radius: 20px;
+          font-size: 0.9em;
+          font-weight: 500;
+        }
+        
+        .pill-label {
+          font-weight: 600;
+          margin-right: 5px;
+        }
+        
+        .dilemma-text {
+          color: #2c3e50;
+          line-height: 1.8;
+          font-size: 1.05em;
+          padding: 20px;
+          background: #f5eee67a;
+          border-radius: 8px;
+          border-left: 4px solid #b55f05ff;
+          white-space: pre-wrap;
+        }
+        
+        .comparison-grid {
+          display: flex;
+          flex-direction: column;
+          gap: 25px;
+          margin-bottom: 30px;
+        }
+        
+        .models-row {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 25px;
+        }
+        
+        @media (min-width: 1024px) {
+          .models-row {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
+        
+        .rubrics-full-width {
+          width: 100%;
+          margin: 10px 0;
+        }
+        
+        .model-panel {
+          background: white;
+          border-radius: 12px;
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+          overflow: hidden;
+          border-top: 4px solid;
+        }
+        
+        .model-panel.model-1 {
+          border-top-color: #43549c;
+        }
+        
+        .model-panel.model-2 {
+          border-top-color: #a44195;
+        }
+        
+        .model-header {
+          padding: 20px 25px;
+          font-weight: 700;
+          font-size: 1.2em;
+          color: white;
+          text-align: center;
+        }
+        
+        .model-panel.model-1 .model-header {
+          /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+          background: #43549c;
+        }
+        
+        .model-panel.model-2 .model-header {
+          /* background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); */
+          background: #a44195 0%;
+        }
+        
+        .content-section {
+          padding: 25px;
+          border-bottom: 1px solid #e1e8ed;
+        }
+        
+        .content-section:last-child {
+          border-bottom: none;
+        }
+        
+        .section-title {
+          color: #2c3e50;
+          font-size: 1.1em;
+          font-weight: 700;
+          margin-bottom: 15px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+        
+        .content-text {
+          color: #34495e;
+          line-height: 1.7;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+          max-height: 400px;
+          overflow-y: auto;
+          padding: 18px;
+          background: #f8f9fa;
+          border-radius: 8px;
+          border-left: 4px solid #43549c;
+          font-size: 0.95em;
+        }
+        
+        .model-panel.model-2 .content-text {
+          border-left-color: #a44195;
+        }
+        
+        .content-text::-webkit-scrollbar {
+          width: 8px;
+        }
+        
+        .content-text::-webkit-scrollbar-track {
+          background: #e1e8ed;
+          border-radius: 4px;
+        }
+        
+        .content-text::-webkit-scrollbar-thumb {
+          background: #959595f5;
+          border-radius: 4px;
+        }
+        
+        .rubrics-container {
+          margin-top: 15px;
+          overflow-x: auto;
+        }
+        
+        .rubrics-table {
+          width: 100%;
+          border-collapse: collapse;
+          font-size: 0.9em;
+          background: white;
+          border-radius: 8px;
+          overflow: hidden;
+        }
+        
+        .rubrics-table thead {
+          /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+          background: #545454f5;
+          color: white;
+          font-size: 1.1em;
+        }
+        
+        .rubrics-table th {
+          padding: 12px 15px;
+          text-align: left;
+          font-weight: 600;
+          border-bottom: 2px solid #545454f5;
+          color: white;
+        }
+        
+        .rubrics-table th:last-child,
+        .rubrics-table th:nth-last-child(2) {
+          text-align: center;
+          width: 120px;
+        }
+        
+        .rubrics-table td {
+          padding: 12px 15px;
+          border-bottom: 1px solid #e1e8ed;
+          vertical-align: middle;
+        }
+        
+        .rubrics-table tbody tr:hover {
+          background: #f8f9fa;
+        }
+        
+        .rubrics-table tbody tr:last-child td {
+          border-bottom: none;
+        }
+        
+        .criterion-cell {
+          color: #2c3e50;
+          line-height: 1.5;
+        }
+        
+        .criterion-cell.penalty {
+          color: #dc2626;
+          font-weight: 500;
+        }
+        
+        .dimension-cell {
+          color: #6b7280;
+          font-size: 0.9em;
+          text-transform: capitalize;
+        }
+        
+        .weight-cell {
+          text-align: center;
+          font-weight: 600;
+          font-size: 1em;
+        }
+        
+        .weight-positive {
+          color: #10b981;
+        }
+        
+        .weight-negative {
+          color: #dc2626;
+        }
+        
+        .judgement-cell {
+          text-align: center;
+        }
+        
+        .judgement-badge {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 60px;
+          padding: 6px 12px;
+          border-radius: 20px;
+          font-weight: 600;
+          font-size: 0.85em;
+        }
+        
+        .judgement-yes {
+          background: #dcfce7;
+          color: #166534;
+        }
+        
+        .judgement-no {
+          background: #fee2e2;
+          color: #991b1b;
+        }
+        
+        .score-row {
+          background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+          /* border-top: 2px solid #667eea !important; */
+          border-top: 2px solid #434343f5 !important;
+        }
+        
+        .score-row:hover {
+          background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%) !important;
+        }
+        
+        .score-row td {
+          padding: 15px !important;
+          border-bottom: none !important;
+        }
+        
+        .score-cell {
+          color: #434343f5;
+          font-weight: 700;
+          font-size: 1.1em;
+        }
+        
+        .stats-bar {
+          display: flex;
+          gap: 20px;
+          padding: 15px;
+          background: #f8f9fa;
+          border-radius: 8px;
+          margin-top: 15px;
+          flex-wrap: wrap;
+        }
+        
+        .stat-item {
+          flex: 1;
+          min-width: 100px;
+        }
+        
+        .stat-label {
+          font-size: 0.85em;
+          color: #6b7280;
+          margin-bottom: 4px;
+        }
+        
+        .stat-value {
+          font-size: 1.2em;
+          font-weight: 700;
+          color: #2c3e50;
+        }
+        
+        .satisfied-count {
+          color: #10b981;
+        }
+        
+        .not-satisfied-count {
+          color: #ef4444;
+        }
+        
+        .empty-state {
+          text-align: center;
+          padding: 60px 20px;
+          color: #6b7280;
+          background: white;
+          border-radius: 12px;
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .empty-state-icon {
+          font-size: 4em;
+          margin-bottom: 15px;
+          opacity: 0.3;
+        }
+        
+        .loading-state {
+          text-align: center;
+          padding: 40px;
+          color: #667eea;
+          font-size: 1.2em;
+        }
+      </style>
+      
+      <div class="comparison-controls">
+        <div class="controls-grid">
+          <div class="control-group">
+            <label for="task-select">Select Dilemma:</label>
+            <select id="task-select">
+              <option value="">Loading...</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="model1-select">Model 1:</label>
+            <select id="model1-select">
+              <option value="">Select a dilemma first</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="model2-select">Model 2:</label>
+            <select id="model2-select">
+              <option value="">Select a dilemma first</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <div id="loading-state" class="loading-state" style="display: none;">
+        Loading comparison data...
+      </div>
+      
+      <div id="comparison-content" style="display: none;">
+        <div class="dilemma-panel">
+          <div class="dilemma-header">
+            <h3>Moral Dilemma</h3>
+          </div>
+          <div class="metadata-pills" id="metadata-pills"></div>
+          <div class="dilemma-text" id="dilemma-text"></div>
+        </div>
+        
+        <div class="comparison-grid">
+          <!-- Thinking Traces Side-by-Side -->
+          <div class="models-row">
+            <div class="model-panel model-1">
+              <div class="model-header" id="model1-header">Model 1</div>
+              <div class="content-section">
+                <div class="section-title">🧠 Thinking Trace</div>
+                <div class="content-text" id="model1-thinking"></div>
+              </div>
+            </div>
+            
+            <div class="model-panel model-2">
+              <div class="model-header" id="model2-header">Model 2</div>
+              <div class="content-section">
+                <div class="section-title">🧠 Thinking Trace</div>
+                <div class="content-text" id="model2-thinking"></div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Thinking Trace Rubrics (Full Width) -->
+          <div class="rubrics-full-width">
+            <div class="rubrics-container" id="thinking-rubrics"></div>
+          </div>
+          
+          <!-- Model Responses Side-by-Side -->
+          <div class="models-row">
+            <div class="model-panel model-1">
+              <div class="content-section">
+                <div class="section-title">💬 Model Response</div>
+                <div class="content-text" id="model1-response"></div>
+              </div>
+            </div>
+            
+            <div class="model-panel model-2">
+              <div class="content-section">
+                <div class="section-title">💬 Model Response</div>
+                <div class="content-text" id="model2-response"></div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Response Rubrics (Full Width) -->
+          <div class="rubrics-full-width">
+            <div class="rubrics-container" id="response-rubrics"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="empty-state" class="empty-state">
+        <div class="empty-state-icon">🎯</div>
+        <div style="font-size: 1.2em; margin-bottom: 10px; font-weight: 600;">Select a dilemma and two models to compare</div>
+        <p>Choose from the dropdowns above to begin your analysis</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  let comparisonData = [];
+  let currentTask = null;
+  let currentModel1 = null;
+  let currentModel2 = null;
+  
+  document.getElementById('task-select').addEventListener('change', onTaskChange);
+  document.getElementById('model1-select').addEventListener('change', onModel1Change);
+  document.getElementById('model2-select').addEventListener('change', onModel2Change);
+  
+  // Load data when page loads
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadData);
+  } else {
+    loadData();
+  }
+  
+  async function loadData() {
+    showLoading();
+    try {
+      console.log('[Comparison] Loading data from moral_reasoning_website/comparison_data.json');
+      const response = await fetch('moral_reasoning_website/comparison_data.json');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      comparisonData = await response.json();
+      console.log('[Comparison] Data loaded successfully:', comparisonData.length, 'tasks');
+      console.log('[Comparison] First task has', comparisonData[0].models.length, 'models');
+      initializeTaskDropdown();
+      hideLoading();
+    } catch (error) {
+      console.error('[Comparison] Failed to load comparison data:', error);
+      document.getElementById('loading-state').innerHTML = 
+        '<div style="color: #dc2626;">Failed to load data: ' + error.message + '<br>Please check the console for details.</div>';
+    }
+  }
+  
+  function initializeTaskDropdown() {
+    const taskSelect = document.getElementById('task-select');
+    taskSelect.innerHTML = '<option value="">Select a dilemma...</option>';
+    
+    comparisonData.forEach((task, index) => {
+      const option = document.createElement('option');
+      option.value = index;
+      option.textContent = `Dilemma ${task.task_number}: ${task.metadata.dilemma_preview}`;
+      taskSelect.appendChild(option);
+    });
+  }
+  
+  function onTaskChange(e) {
+    const taskIndex = e.target.value;
+    if (taskIndex === '') {
+      currentTask = null;
+      resetModelDropdowns();
+      hideContent();
+      return;
+    }
+    
+    currentTask = comparisonData[taskIndex];
+    populateModelDropdowns();
+    
+    if (currentTask.models.length >= 2) {
+      document.getElementById('model1-select').value = '0';
+      document.getElementById('model2-select').value = '1';
+      currentModel1 = currentTask.models[0];
+      currentModel2 = currentTask.models[1];
+      displayComparison();
+    }
+  }
+  
+  function populateModelDropdowns() {
+    const model1Select = document.getElementById('model1-select');
+    const model2Select = document.getElementById('model2-select');
+    
+    model1Select.innerHTML = '<option value="">Select model 1...</option>';
+    model2Select.innerHTML = '<option value="">Select model 2...</option>';
+    
+    currentTask.models.forEach((model, index) => {
+      const option1 = document.createElement('option');
+      option1.value = index;
+      option1.textContent = formatModelName(model.model_name);
+      model1Select.appendChild(option1);
+      
+      const option2 = document.createElement('option');
+      option2.value = index;
+      option2.textContent = formatModelName(model.model_name);
+      model2Select.appendChild(option2);
+    });
+  }
+  
+  function resetModelDropdowns() {
+    document.getElementById('model1-select').innerHTML = '<option value="">Select a dilemma first</option>';
+    document.getElementById('model2-select').innerHTML = '<option value="">Select a dilemma first</option>';
+  }
+  
+  function onModel1Change(e) {
+    const modelIndex = e.target.value;
+    if (modelIndex === '' || !currentTask) {
+      currentModel1 = null;
+      return;
+    }
+    currentModel1 = currentTask.models[modelIndex];
+    if (currentModel1 && currentModel2) {
+      displayComparison();
+    }
+  }
+  
+  function onModel2Change(e) {
+    const modelIndex = e.target.value;
+    if (modelIndex === '' || !currentTask) {
+      currentModel2 = null;
+      return;
+    }
+    currentModel2 = currentTask.models[modelIndex];
+    if (currentModel1 && currentModel2) {
+      displayComparison();
+    }
+  }
+  
+  function displayComparison() {
+    console.log('[Comparison] displayComparison() called');
+    console.log('[Comparison] currentTask:', currentTask ? 'exists' : 'null');
+    console.log('[Comparison] currentModel1:', currentModel1 ? currentModel1.model_name : 'null');
+    console.log('[Comparison] currentModel2:', currentModel2 ? currentModel2.model_name : 'null');
+    
+    if (!currentTask || !currentModel1 || !currentModel2) {
+      console.log('[Comparison] Missing data, hiding content');
+      hideContent();
+      return;
+    }
+    
+    console.log('[Comparison] Showing content');
+    document.getElementById('comparison-content').style.display = 'block';
+    document.getElementById('empty-state').style.display = 'none';
+    
+    displayDilemma();
+    displayBothModels(currentModel1, currentModel2);
+    console.log('[Comparison] Display complete');
+  }
+  
+  function displayDilemma() {
+    const metadata = currentTask.metadata;
+    
+    const pillsContainer = document.getElementById('metadata-pills');
+    pillsContainer.innerHTML = `
+      <span class="pill"><span class="pill-label">Source:</span>${metadata.dilemma_source}</span>
+      <span class="pill"><span class="pill-label">Type:</span>${metadata.case_type}</span>
+      <span class="pill"><span class="pill-label">Domain:</span>${metadata.role_domain}</span>
+      <span class="pill"><span class="pill-label">Context:</span>${metadata.context}</span>
+    `;
+    
+    document.getElementById('dilemma-text').textContent = metadata.dilemma;
+  }
+  
+  function displayModel(prefix, modelData) {
+    console.log(`[Comparison] Displaying ${prefix}:`, modelData.model_name);
+    console.log(`[Comparison] Thinking trace length:`, modelData.thinking_trace.response?.length || 0);
+    console.log(`[Comparison] Model response length:`, modelData.model_resp.response?.length || 0);
+    console.log(`[Comparison] Thinking rubrics:`, modelData.thinking_trace.rubrics?.length || 0);
+    console.log(`[Comparison] Response rubrics:`, modelData.model_resp.rubrics?.length || 0);
+    
+    document.getElementById(`${prefix}-header`).textContent = formatModelName(modelData.model_name);
+    
+    const thinkingTrace = modelData.thinking_trace;
+    const thinkingText = thinkingTrace.response || 'No thinking trace available';
+    document.getElementById(`${prefix}-thinking`).textContent = thinkingText;
+    console.log(`[Comparison] Set ${prefix}-thinking text length:`, thinkingText.length);
+    
+    const modelResp = modelData.model_resp;
+    const responseText = modelResp.response || 'No response available';
+    document.getElementById(`${prefix}-response`).textContent = responseText;
+    console.log(`[Comparison] Set ${prefix}-response text length:`, responseText.length);
+  }
+  
+  function displayBothModels(model1Data, model2Data) {
+    // Display thinking traces and responses
+    displayModel('model1', model1Data);
+    displayModel('model2', model2Data);
+    
+    // Display comparison rubrics tables
+    displayComparisonRubrics('thinking', model1Data.thinking_trace.rubrics, model2Data.thinking_trace.rubrics, 
+                             formatModelName(model1Data.model_name), formatModelName(model2Data.model_name),
+                             model1Data.thinking_trace.score, model2Data.thinking_trace.score);
+    displayComparisonRubrics('response', model1Data.model_resp.rubrics, model2Data.model_resp.rubrics,
+                             formatModelName(model1Data.model_name), formatModelName(model2Data.model_name),
+                             model1Data.model_resp.score, model2Data.model_resp.score);
+  }
+  
+  function displayComparisonRubrics(section, rubrics1, rubrics2, model1Name, model2Name, score1, score2) {
+    const container = document.getElementById(`${section}-rubrics`);
+    
+    if (!container) {
+      console.error(`[Comparison] Rubrics container not found: ${section}-rubrics`);
+      return;
+    }
+    
+    if (!rubrics1 || rubrics1.length === 0 || !rubrics2 || rubrics2.length === 0) {
+      container.innerHTML = '<p style="color: #6b7280; font-style: italic;">No rubrics available</p>';
+      return;
+    }
+    
+    // Create a map of rubrics by criterion_id for model 2
+    const rubrics2Map = new Map();
+    rubrics2.forEach(r => rubrics2Map.set(r.criterion_id, r));
+    
+    // Build table HTML
+    let tableHtml = `
+      <table class="rubrics-table">
+        <thead>
+          <tr>
+            <th>Criterion</th>
+            <th>Dimension</th>
+            <th style="text-align: center;">Weight</th>
+            <th style="text-align: center;">${model1Name}</th>
+            <th style="text-align: center;">${model2Name}</th>
+          </tr>
+        </thead>
+        <tbody>
+    `;
+    
+    rubrics1.forEach(rubric1 => {
+      const rubric2 = rubrics2Map.get(rubric1.criterion_id);
+      const weight = rubric1.weight || 1;
+      const isNegative = weight < 0;
+      const weightStr = weight > 0 ? `+${weight}` : `${weight}`;
+      const weightClass = isNegative ? 'weight-negative' : 'weight-positive';
+      const criterionClass = isNegative ? 'criterion-cell penalty' : 'criterion-cell';
+      
+      const judgement1 = rubric1.judgement.toLowerCase() === 'yes';
+      const judgement2 = rubric2 ? rubric2.judgement.toLowerCase() === 'yes' : false;
+      
+      tableHtml += `
+        <tr>
+          <td class="${criterionClass}">${rubric1.criterion}</td>
+          <td class="dimension-cell">${rubric1.dimension}</td>
+          <td class="weight-cell ${weightClass}">${weightStr}</td>
+          <td class="judgement-cell">
+            <span class="judgement-badge judgement-${judgement1 ? 'yes' : 'no'}">
+              ${judgement1 ? '✓ Yes' : '✗ No'}
+            </span>
+          </td>
+          <td class="judgement-cell">
+            <span class="judgement-badge judgement-${judgement2 ? 'yes' : 'no'}">
+              ${judgement2 ? '✓ Yes' : '✗ No'}
+            </span>
+          </td>
+        </tr>
+      `;
+    });
+    
+    // Add score row at the bottom
+    const score1Display = score1 !== undefined && score1 !== null ? score1.toFixed(2) : 'N/A';
+    const score2Display = score2 !== undefined && score2 !== null ? score2.toFixed(2) : 'N/A';
+    
+    tableHtml += `
+          <tr class="score-row">
+            <td colspan="3" style="text-align: right; font-weight: bold; padding-right: 20px;">Score:</td>
+            <td class="score-cell" style="text-align: center; font-weight: bold; font-size: 1.1em;">${score1Display}</td>
+            <td class="score-cell" style="text-align: center; font-weight: bold; font-size: 1.1em;">${score2Display}</td>
+          </tr>
+    `;
+    
+    tableHtml += `
+        </tbody>
+      </table>
+    `;
+    
+    container.innerHTML = tableHtml;
+    
+    console.log(`[Comparison] Displayed comparison table for ${section} with ${rubrics1.length} rubrics`);
+  }
+  
+  function displayStats(containerId, rubrics) {
+    const container = document.getElementById(containerId);
+    if (!rubrics || rubrics.length === 0) {
+      container.style.display = 'none';
+      return;
+    }
+    
+    container.style.display = 'flex';
+    
+    const total = rubrics.length;
+    const satisfied = rubrics.filter(r => r.judgement.toLowerCase() === 'yes').length;
+    const notSatisfied = total - satisfied;
+    const percentage = ((satisfied / total) * 100).toFixed(1);
+    
+    container.innerHTML = `
+      <div class="stat-item">
+        <div class="stat-label">Total</div>
+        <div class="stat-value">${total}</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Satisfied</div>
+        <div class="stat-value satisfied-count">${satisfied}</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Not Satisfied</div>
+        <div class="stat-value not-satisfied-count">${notSatisfied}</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Success Rate</div>
+        <div class="stat-value">${percentage}%</div>
+      </div>
+    `;
+  }
+  
+  function formatModelName(name) {
+    return name.replace(/_reasoning_(medium|high)$/, '').replace(/_/g, ' ');
+  }
+  
+  function showLoading() {
+    document.getElementById('loading-state').style.display = 'block';
+  }
+  
+  function hideLoading() {
+    document.getElementById('loading-state').style.display = 'none';
+  }
+  
+  function hideContent() {
+    document.getElementById('comparison-content').style.display = 'none';
+    document.getElementById('empty-state').style.display = 'block';
+  }
+})();
+</script>
+<!-- End Model Comparison Section -->
 
 <!-- section title -->
 <br>
