@@ -51,20 +51,41 @@ body {
 }
 
 .button.is-dark {
-  background: var(--text-primary) !important;
-  border: none !important;
-  color: white !important;
+  /* background: var(--text-primary) !important; */
+  background: white !important;
+  border: 2px solid #212121 !important;
+  /* color: #212121 !important; */
+  color: inherit !important; 
   box-shadow: var(--shadow-md);
 }
 
 .button.is-dark:hover {
   transform: translateY(-2px);
+  border: 2px solid #212121 !important;
   box-shadow: var(--shadow-lg);
-  background: var(--primary-color) !important;
+  background: #f2f0f0 !important;
+}
+
+/* .button .icon-image {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  vertical-align: middle;
+} */
+
+.button .icon-image {
+  width: auto;
+  height: 100x;  /* Make it larger than the container */
+  object-fit: cover; /* Crop instead of contain */
+  overflow: hidden;
+  display: inline-flex;
+  vertical-align: middle;
+  /* display: inline-block; */
 }
 
 .button.is-dark:active {
   transform: translateY(0);
+  border: 2px solid #212121 !important;
   box-shadow: var(--shadow-md);
 }
 
@@ -656,6 +677,7 @@ code {
     margin: 0.25rem !important;
     font-size: 0.875rem !important;
     padding: 0.75rem 1rem !important;
+    
   }
   
   .more-works-container {
@@ -779,6 +801,7 @@ a:focus {
   .button {
     background: transparent !important;
     color: var(--text-primary) !important;
+    /* color: #ffffff !important; */
     box-shadow: none !important;
   }
 }
