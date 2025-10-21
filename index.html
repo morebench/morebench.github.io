@@ -1347,19 +1347,19 @@
     const score1Display = score1 !== undefined && score1 !== null ? score1.toFixed(2) : 'N/A';
     const score2Display = score2 !== undefined && score2 !== null ? score2.toFixed(2) : 'N/A';
 
-    const score1LengthControlDisplay = (score1 !== undefined && score1 !== null && output_tokens1) ? ((score1 / output_tokens1) * 100).toFixed(4) : 'N/A';
-    const score2LengthControlDisplay = (score2 !== undefined && score2 !== null && output_tokens2) ? ((score2 / output_tokens2) * 100).toFixed(4) : 'N/A';
+    const score1LengthControlDisplay = (score1 !== undefined && score1 !== null && output_tokens1) ? ((score1 / output_tokens1) * 100).toFixed(2) : 'N/A';
+    const score2LengthControlDisplay = (score2 !== undefined && score2 !== null && output_tokens2) ? ((score2 / output_tokens2) * 100).toFixed(2) : 'N/A';
     
     tableHtml += `
           <tr class="score-row-first">
-            <td colspan="3" style="text-align: right; font-weight: bold; padding-right: 20px;">MoReBench-Easy (Scores before length-controlled):</td>
-            <td class="score-cell" style="text-align: center; font-weight: bold; font-size: 1.1em;">${score1Display}</td>
-            <td class="score-cell" style="text-align: center; font-weight: bold; font-size: 1.1em;">${score2Display}</td>
+            <td colspan="3" style="text-align: right; font-weight: bold; padding-right: 50px;">MoReBench-Easy (scores before length control):</td>
+            <td class="score-cell" style="text-align: center; font-weight: bold; font-size: 1.1em; padding-right: 50px;">${score1Display}</td>
+            <td class="score-cell" style="text-align: center; font-weight: bold; font-size: 1.1em; padding-right: 50px;">${score2Display}</td>
           </tr>
           <tr class="score-row">
-            <td colspan="3" style="text-align: right; font-weight: bold; padding-right: 20px;">MoReBench-Hard (Scores after length-controlled):</td>
-            <td class="score-cell" style="text-align: center; font-weight: bold; font-size: 1.1em;">${score1LengthControlDisplay} </td>
-            <td class="score-cell" style="text-align: center; font-weight: bold; font-size: 1.1em;">${score2LengthControlDisplay}</td>
+            <td colspan="3" style="text-align: right; font-weight: bold; padding-right: 50px;">MoReBench-Hard (scores after length control):</td>
+            <td class="score-cell" style="text-align: center; font-weight: bold; font-size: 1.1em; padding-right: 50px;">${score1LengthControlDisplay} </td>
+            <td class="score-cell" style="text-align: center; font-weight: bold; font-size: 1.1em; padding-right: 50px;">${score2LengthControlDisplay}</td>
           </tr>
     `;
     
