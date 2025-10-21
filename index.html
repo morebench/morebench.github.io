@@ -539,7 +539,7 @@
         
         @media (min-width: 768px) {
           .controls-grid {
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
           }
         }
         
@@ -574,6 +574,49 @@
           outline: none;
           border-color: #b55f05ff;
           box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .checkbox-group {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+        
+        .checkbox-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          cursor: pointer;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+          width: 18px;
+          height: 18px;
+          cursor: pointer;
+          accent-color: #b55f05ff;
+        }
+        
+        .checkbox-item label {
+          margin-bottom: 0;
+          cursor: pointer;
+          font-weight: 500;
+          font-size: 0.95em;
+        }
+        
+        .thinking-section {
+          transition: all 0.3s ease;
+        }
+        
+        .thinking-section.hidden {
+          display: none !important;
+        }
+        
+        .response-section {
+          transition: all 0.3s ease;
+        }
+        
+        .response-section.hidden {
+          display: none !important;
         }
         
         .dilemma-panel {
@@ -950,6 +993,19 @@
               <option value="">Select a dilemma first</option>
             </select>
           </div>
+          <div class="control-group">
+            <label>Reasoning Type:</label>
+            <div class="checkbox-group">
+              <div class="checkbox-item">
+                <input type="checkbox" id="toggle-thinking" checked>
+                <label for="toggle-thinking">Thinking Trace</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="toggle-response" checked>
+                <label for="toggle-response">Model Response</label>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       
@@ -968,7 +1024,7 @@
         
         <div class="comparison-grid">
           <!-- Thinking Traces Side-by-Side -->
-          <div class="models-row">
+          <div class="models-row thinking-section">
             <div class="model-panel model-1">
               <div class="model-header" id="model1-header">Model 1</div>
               <div class="content-section">
@@ -987,13 +1043,14 @@
           </div>
           
           <!-- Thinking Trace Rubrics (Full Width) -->
-          <div class="rubrics-full-width">
+          <div class="rubrics-full-width thinking-section">
             <div class="rubrics-container" id="thinking-rubrics"></div>
           </div>
           
           <!-- Model Responses Side-by-Side -->
-          <div class="models-row">
+          <div class="models-row response-section">
             <div class="model-panel model-1">
+              <div class="model-header" id="model1-response-header">Model 1</div>
               <div class="content-section">
                 <div class="section-title">💬 Model Response</div>
                 <div class="content-text" id="model1-response"></div>
@@ -1001,6 +1058,7 @@
             </div>
             
             <div class="model-panel model-2">
+              <div class="model-header" id="model2-response-header">Model 2</div>
               <div class="content-section">
                 <div class="section-title">💬 Model Response</div>
                 <div class="content-text" id="model2-response"></div>
@@ -1009,7 +1067,7 @@
           </div>
           
           <!-- Response Rubrics (Full Width) -->
-          <div class="rubrics-full-width">
+          <div class="rubrics-full-width response-section">
             <div class="rubrics-container" id="response-rubrics"></div>
           </div>
         </div>
@@ -1034,6 +1092,8 @@
   document.getElementById('task-select').addEventListener('change', onTaskChange);
   document.getElementById('model1-select').addEventListener('change', onModel1Change);
   document.getElementById('model2-select').addEventListener('change', onModel2Change);
+  document.getElementById('toggle-thinking').addEventListener('change', onToggleThinking);
+  document.getElementById('toggle-response').addEventListener('change', onToggleResponse);
   
   // Load data when page loads
   if (document.readyState === 'loading') {
@@ -1186,7 +1246,9 @@
     console.log(`[Comparison] Thinking rubrics:`, modelData.thinking_trace.rubrics?.length || 0);
     console.log(`[Comparison] Response rubrics:`, modelData.model_resp.rubrics?.length || 0);
     
-    document.getElementById(`${prefix}-header`).textContent = formatModelName(modelData.model_name);
+    const formattedModelName = formatModelName(modelData.model_name);
+    document.getElementById(`${prefix}-header`).textContent = formattedModelName;
+    document.getElementById(`${prefix}-response-header`).textContent = formattedModelName;
     
     const thinkingTrace = modelData.thinking_trace;
     const thinkingText = thinkingTrace.response || 'No thinking trace available';
@@ -1326,14 +1388,14 @@
     
     tableHtml += `
           <tr class="score-row-first">
-            <td colspan="3" style="text-align: right; font-weight: bold; padding-right: 20px;">MoReBench-Easy (Scores before length-controlled):</td>
-            <td class="score-cell" style="text-align: center; font-weight: bold; font-size: 1.1em;">${score1Display}</td>
-            <td class="score-cell" style="text-align: center; font-weight: bold; font-size: 1.1em;">${score2Display}</td>
+            <td colspan="3" style="text-align: right; font-weight: bold; padding-right: 50px;">MoReBench-Easy (scores before length control):</td>
+            <td class="score-cell" style="text-align: center; font-weight: bold; font-size: 1.1em; padding-right: 50px;">${score1Display}</td>
+            <td class="score-cell" style="text-align: center; font-weight: bold; font-size: 1.1em; padding-right: 50px;">${score2Display}</td>
           </tr>
           <tr class="score-row">
-            <td colspan="3" style="text-align: right; font-weight: bold; padding-right: 20px;">MoReBench-Hard (Scores after length-controlled):</td>
-            <td class="score-cell" style="text-align: center; font-weight: bold; font-size: 1.1em;">${score1LengthControlDisplay} </td>
-            <td class="score-cell" style="text-align: center; font-weight: bold; font-size: 1.1em;">${score2LengthControlDisplay}</td>
+            <td colspan="3" style="text-align: right; font-weight: bold; padding-right: 50px;">MoReBench-Hard (scores after length control):</td>
+            <td class="score-cell" style="text-align: center; font-weight: bold; font-size: 1.1em; padding-right: 50px;">${score1LengthControlDisplay} </td>
+            <td class="score-cell" style="text-align: center; font-weight: bold; font-size: 1.1em; padding-right: 50px;">${score2LengthControlDisplay}</td>
           </tr>
     `;
     
@@ -1396,6 +1458,24 @@
   function hideContent() {
     document.getElementById('comparison-content').style.display = 'none';
     document.getElementById('empty-state').style.display = 'block';
+  }
+  
+  function onToggleThinking(e) {
+    const thinkingSections = document.querySelectorAll('.thinking-section');
+    if (e.target.checked) {
+      thinkingSections.forEach(section => section.classList.remove('hidden'));
+    } else {
+      thinkingSections.forEach(section => section.classList.add('hidden'));
+    }
+  }
+  
+  function onToggleResponse(e) {
+    const responseSections = document.querySelectorAll('.response-section');
+    if (e.target.checked) {
+      responseSections.forEach(section => section.classList.remove('hidden'));
+    } else {
+      responseSections.forEach(section => section.classList.add('hidden'));
+    }
   }
 })();
 </script>
