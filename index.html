@@ -1255,9 +1255,6 @@
       
       const judgement1 = rubric1.judgement.toLowerCase() === 'yes';
       const judgement2 = rubric2 ? rubric2.judgement.toLowerCase() === 'yes' : false;
-
-      const output_tokens1 = rubric1.output_tokens
-      const output_tokens2 = rubric2.output_tokens
       
       tableHtml += `
         <tr>
@@ -1277,16 +1274,55 @@
         </tr>
       `;
     });
-    // Get output tokens from first rubric (since they're all the same)
-    const output_tokens1 = rubrics1.length > 0 ? rubrics1[0].output_tokens : null;
-    const output_tokens2 = rubrics2.length > 0 ? rubrics2[0].output_tokens : null;
+    // Create dictionary to store average length for each model
+    const modelName_to_output_len_final_resp = {
+      'gpt-5': 4019,
+      'gpt-5-mini': 4802,
+      'gpt-5-nano': 6014,
+      'claude-opus-4.1': 2274,
+      'claude-sonnet-4': 2069,
+      'gemini-2.5-pro': 6098,
+      'gemini-2.5-flash': 6398,
+      'gemini-2.5-flash-lite': 5246,
+      'gpt-oss-120b': 6213,
+      'gpt-oss-20b': 5071,
+      'deepseek-chat-v3.1': 4571,
+      'deepseek-r1-0528': 4218,
+      'qwen3-235b-a22b-thinking-2507': 5995,
+      'qwen3-30b-a3b-thinking-2507': 5973
+    };
+
+    const modelName_to_output_len_thinking_Trace = {
+      'gpt-5': 3895,
+      'gpt-5-mini': 4492,
+      'gpt-5-nano': 4983,
+      'claude-opus-4.1': 1272,
+      'claude-sonnet-4': 1898,
+      'gemini-2.5-pro': 2705,
+      'gemini-2.5-flash': 2512,
+      'gemini-2.5-flash-lite': 3373,
+      'gpt-oss-120b': 1272,
+      'gpt-oss-20b': 2338,
+      'deepseek-chat-v3.1': 1458,
+      'deepseek-r1-0528': 2228,
+      'qwen3-235b-a22b-thinking-2507': 3164,
+      'qwen3-30b-a3b-thinking-2507': 3691
+    };
+
+    // Select dictionary based on section
+    const modelName_to_output_len = section === 'thinking' 
+    ? modelName_to_output_len_thinking_Trace 
+    : modelName_to_output_len_final_resp;
+    
+    const model1Length = modelName_to_output_len[model1Name] || 0;
+    const model2Length = modelName_to_output_len[model2Name] || 0;
 
     // Add score row at the bottom
     const score1Display = score1 !== undefined && score1 !== null ? score1.toFixed(2) : 'N/A';
     const score2Display = score2 !== undefined && score2 !== null ? score2.toFixed(2) : 'N/A';
 
-    const score1LengthControlDisplay = (score1 !== undefined && score1 !== null && output_tokens1) ? ((score1 / output_tokens1) * 100).toFixed(4) : 'N/A';
-    const score2LengthControlDisplay = (score2 !== undefined && score2 !== null && output_tokens2) ? ((score2 / output_tokens2) * 100).toFixed(4) : 'N/A';
+    const score1LengthControlDisplay = (score1 !== undefined && score1 !== null && model1Length) ? ((score1 * 1000 / model1Length) ).toFixed(4) : 'N/A';
+    const score2LengthControlDisplay = (score2 !== undefined && score2 !== null && model2Length) ? ((score2 * 1000 / model2Length) ).toFixed(4) : 'N/A';
     
     tableHtml += `
           <tr class="score-row-first">
