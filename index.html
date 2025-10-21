@@ -1383,8 +1383,8 @@
     const score1Display = score1 !== undefined && score1 !== null ? score1.toFixed(2) : 'N/A';
     const score2Display = score2 !== undefined && score2 !== null ? score2.toFixed(2) : 'N/A';
 
-    const score1LengthControlDisplay = (score1 !== undefined && score1 !== null && model1Length) ? ((score1 * 1000 / model1Length) ).toFixed(4) : 'N/A';
-    const score2LengthControlDisplay = (score2 !== undefined && score2 !== null && model2Length) ? ((score2 * 1000 / model2Length) ).toFixed(4) : 'N/A';
+    const score1LengthControlDisplay = (score1 !== undefined && score1 !== null && model1Length) ? ((score1 * 1000 / model1Length) ).toFixed(2) : 'N/A';
+    const score2LengthControlDisplay = (score2 !== undefined && score2 !== null && model2Length) ? ((score2 * 1000 / model2Length) ).toFixed(2) : 'N/A';
     
     tableHtml += `
           <tr class="score-row-first">
